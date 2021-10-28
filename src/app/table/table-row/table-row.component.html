@@ -1,0 +1,22 @@
+<td>
+  <span
+    *ngIf="item.config?.isExpandable"
+    class="expand-icon"
+    (click)="onExpandToggle()"
+  >
+    <span *ngIf="item.config?.isExpanded"> ^ </span>
+    <span *ngIf="!item.config?.isExpanded"> > </span>
+  </span>
+</td>
+<td *ngFor="let col of tableColumns" [ngClass]="col.class">
+  <ng-container *ngIf="col.type === ColumnType.text || !col.type">
+    {{ item.data[col.field] | cellFormatter: col.pipe:item:col.field }}
+  </ng-container>
+
+  <ng-container *ngIf="col.type === ColumnType.component">
+    <ng-template
+      [ngComponentOutlet]="col.component"
+      [ndcDynamicInputs]="{ input: item }"
+    ></ng-template>
+  </ng-container>
+</td>

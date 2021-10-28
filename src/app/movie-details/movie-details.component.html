@@ -1,0 +1,9 @@
+<div class="container">
+  <img [src]="data.imageUrl" width="60" />
+  <div class="content">
+    <div class="movie-title">{{ data.title }}</div>
+    <div class="genres">
+      <div class="genre" *ngFor="let genre of data.genres">{{ genre }}</div>
+    </div>
+  </div>
+</div>

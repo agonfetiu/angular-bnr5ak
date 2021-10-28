@@ -1,0 +1,36 @@
+table,
+th,
+td {
+  border-bottom: 1px solid rgb(199, 199, 199);
+  border-collapse: collapse;
+  text-align: left;
+  border-left: none;
+  border-right: none;
+  padding: 10px 30px;
+}
+
+table {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+th {
+  color: rgb(121, 121, 121);
+  border-right: none;
+}
+
+.expanded-row {
+  background: rgb(247, 247, 247);
+}
+
+.expand-icon {
+  width: 10px;
+  cursor: pointer;
+}
+
+.expand-icon:hover {
+  font-weight: 900;
+}
+
+tr:hover {
+  background: rgb(247, 247, 247);
+}

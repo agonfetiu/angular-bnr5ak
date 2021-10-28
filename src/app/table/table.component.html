@@ -1,0 +1,41 @@
+<table style="width:100%">
+  <ng-content></ng-content>
+  <th style="width:20px"></th>
+  <th *ngFor="let col of tableColumns">
+    <span>{{ col.name }}</span>
+  </th>
+
+  <ng-template #rowTemplateRef let-item="item">
+    <tr table-row [item]="item" [tableColumns]="tableColumns"></tr>
+
+    <ng-container *ngIf="item.config?.isExpanded">
+      <tr
+        class="expanded-row"
+        *ngIf="item.config.type === TableRowType.customContent"
+      >
+        <td colspan="100">
+          <ng-template
+            [ngComponentOutlet]="item.config.component"
+            [ndcDynamicInputs]="{ input: item }"
+          ></ng-template>
+        </td>
+      </tr>
+
+      <ng-container *ngIf="item.config.type === TableRowType.children">
+        <ng-template
+          *ngFor="let child of item.children"
+          [ngTemplateOutlet]="rowTemplateRef"
+          [ngTemplateOutletContext]="{ item: child }"
+        >
+        </ng-template>
+      </ng-container>
+    </ng-container>
+  </ng-template>
+
+  <ng-template
+    *ngFor="let item of data"
+    [ngTemplateOutlet]="rowTemplateRef"
+    [ngTemplateOutletContext]="{ item: item }"
+  >
+  </ng-template>
+</table>

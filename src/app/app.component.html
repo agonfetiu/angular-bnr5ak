@@ -1,0 +1,41 @@
+<div style="display:flex; margin:10px 0px">
+  <div
+    class="tab-item"
+    [ngClass]="{ active: showingTable === 1 }"
+    (click)="showingTable = 1"
+  >
+    Custom content
+  </div>
+  <div
+    class="tab-item"
+    [ngClass]="{ active: showingTable === 2 }"
+    (click)="showingTable = 2"
+  >
+    children rows
+  </div>
+  <div
+    class="tab-item"
+    [ngClass]="{ active: showingTable === 3 }"
+    (click)="showingTable = 3"
+  >
+    children rows with custom content
+  </div>
+</div>
+
+<app-table
+  *ngIf="showingTable === 1"
+  [data]="tableRows"
+  [tableColumns]="cols"
+></app-table>
+
+<app-table
+  *ngIf="showingTable === 2"
+  [data]="tableRowsWithChildren"
+  [tableColumns]="cols2"
+></app-table>
+
+<app-table
+  *ngIf="showingTable === 3"
+  [data]="tree"
+  [tableColumns]="cols3"
+></app-table>

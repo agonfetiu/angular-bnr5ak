@@ -1,0 +1,9 @@
+<div style="display:flex; justify-content: space-evenly">
+  <iframe
+    [src]="input.data.map | sanitize"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy"
+  ></iframe>
+  <div style="padding:10px">{{ input.data.description }}</div>
+</div>
